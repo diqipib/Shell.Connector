@@ -1,19 +1,17 @@
-Методы:
+__Methods__
 
-     postMessage(connectorId,data) - Отправка сообщения коннектору получателю
-                  connectorId <in>   [String] - Идентификатор коннектора получателя
-                  data            <in>   [String] - Данные для передачи
-
-     connect(connectorId) - Метод для проверки доступности указанного коннектора
-                  connectorId <in>   [String] - Идентификатор проверяемого коннектора
-
-Свойства:
-
-     id               <out>   [String] - Идентификатор текущего коннектора
-
-     onmessage  <in>    [Object] - Задаёт ссылку на объект обратного вызова (функцию).
-                                               Во время срабатывания события в функцию/метод обратного вызова передаёт 2 параметра (connectorId, data)
+postMessage(connectorId,data) - Method for sending messages to destination connector in other process
+                  connectorId <in>   [String] - destination connector id
+                  data            <in>   [String] - object / string / number / etc...
+connect(connectorId) - Method for checking connection with destination connector
+                  connectorId <in>   [String] - destination connector id
 
 
-3) Идентификатор коннектора генерируется как уникальный GUID и задаётся внутри самого объекта
-4) Вместо использования отдельных инстансов Shell Browser Window используется только один для всех коннекторов. Благодаря этому при падении скрипта / закрытии процесса в памяти не остаётся инстансов открытых окон кроме одного, обеспечивающего работу коннекторов.
+__Properties__
+
+id <readonly>   [String] - Current connector id
+
+onmessage  <in>    [Object] - Callback function handler
+                              Handler accepts 2 params when event fires - connectorId, data
+
+
